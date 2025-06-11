@@ -41,3 +41,6 @@ apps/js-sdk/firecrawl/dist
 llm-links.txt
 mapped-links.txt
 gke-key.json
+# pixi environments
+.pixi
+*.egg-info
