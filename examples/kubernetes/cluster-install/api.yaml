@@ -15,13 +15,23 @@ spec:
       imagePullSecrets:
         - name: docker-registry-secret
       containers:
-        - name: api
-          image: ghcr.io/winkk-dev/firecrawl:latest
+        - name: mihomo
+          image: harbor.bk8s/aijupyter/mihomo:mini
           imagePullPolicy: Always
-          args: [ "pnpm", "run", "start:production" ]
+        - name: api
+          # image: ghcr.io/winkk-dev/firecrawl:latest
+          image: harbor.bk8s/aijupyter/firecrawler:api-v1
+          imagePullPolicy: Always
+          args: ["pnpm", "run", "start"]
           ports:
             - containerPort: 3002
           env:
+            # - name: http_proxy
+            #   value: "http://127.0.0.1:7890"
+            # - name: https_proxy
+            #   value: "http://127.0.0.1:7890"
+            # - name: no_proxy
+            #   value: "localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,106.13.248.106/32,.svc,.cluster.local,.bk8s,lionrock-srg.com,lionrock.com"
             - name: FLY_PROCESS_GROUP
               value: "app"
           envFrom:
@@ -38,15 +48,15 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 3
-          readinessProbe:
-            httpGet:
-              path: /v0/health/readiness
-              port: 3002
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 5
-            successThreshold: 1
-            failureThreshold: 3
+          # readinessProbe:
+          #   httpGet:
+          #     path: /v0/health/readiness
+          #     port: 3002
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 30
+          #   timeoutSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service

@@ -23,7 +23,8 @@ spec:
         - name: docker-registry-secret
       containers:
         - name: playwright-service
-          image: ghcr.io/winkk-dev/firecrawl-playwright:latest
+          # image: ghcr.io/winkk-dev/firecrawl-playwright:latest
+          image: harbor.bk8s/aijupyter/firecrawler:playwright-v1
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -39,15 +40,15 @@ spec:
             timeoutSeconds: 5
             successThreshold: 1
             failureThreshold: 3
-          readinessProbe:
-            httpGet:
-              path: /health/readiness
-              port: 3000
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 5
-            successThreshold: 1
-            failureThreshold: 3
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health/readiness
+          #     port: 3000
+          #   initialDelaySeconds: 30
+          #   periodSeconds: 30
+          #   timeoutSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service

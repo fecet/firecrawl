@@ -1,0 +1,15 @@
+.git
+notebooks
+build
+*.ipynb
+*.so
+*.egg-info
+.pnpm
+.pixi/
+failed-retry/
+admin-config
+test/
+roles/cri/files/
+roles/k8s/files/
+roles/harbor-prepare/files/
+roles/host_init/files/*.run

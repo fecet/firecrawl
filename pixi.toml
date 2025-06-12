@@ -1,6 +1,6 @@
 [workspace]
 authors = ["fecet <xiezej@gmail.com>"]
-channels = ["conda-forge"]
+channels = ["https://prefix.dev/meta-forge", "conda-forge"]
 name = "firecrawl"
 platforms = ["linux-64"]
 version = "0.1.0"

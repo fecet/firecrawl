@@ -16,7 +16,8 @@ spec:
         - name: docker-registry-secret
       containers:
         - name: worker
-          image: ghcr.io/winkk-dev/firecrawl:latest
+          # image: ghcr.io/winkk-dev/firecrawl:latest
+          image: harbor.bk8s/aijupyter/firecrawler:api-v1
           imagePullPolicy: Always
           args: [ "pnpm", "run", "workers" ]
           env:
